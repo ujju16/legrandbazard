@@ -1,3 +1,7 @@
+# Badges
+![CI/CD](https://github.com/ujju16/legrandbazard/actions/workflows/ci-cd.yml/badge.svg)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 
 # E-commerce Artiste avec Next.js
 
