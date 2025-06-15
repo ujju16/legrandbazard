@@ -1,0 +1,22 @@
+{
+  "name": "legrandbazard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "mongoose": "^8.15.2",
+    "next": "^15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.0.1",
+    "@types/react": "19.1.8",
+    "typescript": "^5.8.3"
+  }
+}
