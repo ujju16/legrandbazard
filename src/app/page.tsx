@@ -1,4 +1,3 @@
-
 import Section from "../components/Section";
 import Image from "next/image";
 
@@ -8,14 +7,21 @@ async function getArtworks() {
   return res.json();
 }
 
+interface Artwork {
+  _id: string;
+  title: string;
+  description?: string;
+  image?: string;
+}
+
 export default async function Home() {
-  const artworks = await getArtworks();
+  const artworks: Artwork[] = await getArtworks();
   return (
     <>
       <Section id="portfolio" title="Portfolio">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {artworks.length === 0 && <div>Aucune œuvre trouvée.</div>}
-          {artworks.map((art: any) => (
+          {artworks.map((art: Artwork) => (
             <div key={art._id} className="bg-gray-50 rounded shadow p-4 flex flex-col items-center">
               <Image src={art.image || "/file.svg"} alt={art.title} width={80} height={80} />
               <div className="mt-4 font-semibold">{art.title}</div>

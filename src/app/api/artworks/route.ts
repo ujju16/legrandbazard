@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { dbConnect } from '@/lib/mongodb';
-import Artwork from '@/models/Artwork';
+import { dbConnect } from 'lib/mongodb';
+import Artwork from 'models/Artwork';
 
 export async function GET() {
   await dbConnect();
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     await dbConnect();
     const artwork = await Artwork.create(data);
     return NextResponse.json(artwork, { status: 201 });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: 'Erreur lors de la création.' }, { status: 500 });
   }
 }
