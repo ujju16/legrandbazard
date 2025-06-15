@@ -1,14 +1,20 @@
-import { dbConnect } from './mongodb';
+import 'dotenv/config';
+import mongoose from 'mongoose';
 
-async function testConnection() {
+const uri = process.env.MONGODB_URI as string;
+
+const clientOptions = {
+  serverApi: { version: "1" as const, strict: true, deprecationErrors: true }
+};
+
+async function run() {
   try {
-    await dbConnect();
-    console.log('Connexion MongoDB réussie !');
-    process.exit(0);
-  } catch (err) {
-    console.error('Erreur de connexion MongoDB :', err);
-    process.exit(1);
+    await mongoose.connect(uri, clientOptions);
+    await mongoose.connection.db.admin().command({ ping: 1 });
+    console.log('Pinged your deployment. You successfully connected to MongoDB!');
+  } finally {
+    await mongoose.disconnect();
   }
 }
 
-testConnection();
+run().catch(console.dir);
